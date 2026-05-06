@@ -9,7 +9,7 @@ export default function Navbar() {
       {/* Logo esquerda */}
       <div style={styles.logo}>
         <Image
-          src="/eniac-logo.jpg"
+          src="/eniac-logo.jpg.png"
           alt="Logo ENIAC"
           width={180}
           height={60}
@@ -21,7 +21,7 @@ export default function Navbar() {
       <ul style={styles.menu}>
       <li>
     <a
-      href="https://eniac-edu.grupoa.education/plataforma/auth/signin?returnUrl=%2F"
+      href="https://www.eniac.edu.br/"
       target="_blank"
       rel="noopener noreferrer"
       style={linkStyle}
