@@ -40,3 +40,39 @@ nav::after {
   height: 2px;
   background: linear-gradient(to right, #ffffff, #3b82f6);
 }
+
+.shine-button {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(to right, #1e3a8a, #3b82f6);
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.shine-button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.shine-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.25);
+  transform: skewX(-25deg);
+  transition: left 0.7s ease;
+}
+
+.shine-button:hover::before {
+  left: 130%;
+}
