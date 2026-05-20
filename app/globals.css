@@ -41,6 +41,10 @@ nav::after {
   background: linear-gradient(to right, #ffffff, #3b82f6);
 }
 
+nav.no-underline::after {
+  display: none;
+}
+
 .shine-button {
   position: relative;
   overflow: hidden;

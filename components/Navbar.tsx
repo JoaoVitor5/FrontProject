@@ -1,10 +1,15 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const navClass = pathname === "/gestoria" ? "no-underline" : "";
+
   return (
-    <nav style={styles.nav}>
+    <nav className={navClass} style={styles.nav}>
 
       {/* Logo esquerda */}
       <div style={styles.logo}>
