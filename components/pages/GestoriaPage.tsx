@@ -1,14 +1,22 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 export default function GestoriaPage() {
+
+    const router = useRouter();
+
   return (
+
     <main className="flex min-h-screen bg-gray-300">
 
       {/* Sidebar */}
-<aside className="w-64 bg-white shadow-lg flex flex-col justify-between">
+<aside className="w-64 h-[95vh] sticky top-4 ml-4 bg-white shadow-x1 rounded-2xl flex flex-col justify-between">
 
   <div>
 
     {/* Logo */}
-    <div className="p-6 border-b">
+    <div className="p-6">
       <img
         src="/eniac-logo.png"
         alt="Logo ENIAC"
@@ -16,7 +24,7 @@ export default function GestoriaPage() {
       />
     </div>
 
-    {/* Navegação */}
+    {/* Navegação da Navbar */}
     <nav className="no-underline flex flex-col p-4 gap-2">
 
       <button className="sidebar-button">
@@ -43,15 +51,17 @@ export default function GestoriaPage() {
 
   </div>
  
-  {/* Parte inferior */}
-  <div className="p-4 border-t flex flex-col gap-2">
+  {/* Parte inferior da Navbar */}
+  <div className="p-4 flex flex-col gap-2">
 
     <button className="sidebar-button">
        Configurações
     </button>
 
-    <button className="sidebar-button text-red-500">
-       Sair
+    <button 
+    onClick={() => router.push("/cadastro")}
+    className="sidebar-button text-red-500">
+     Sair
     </button>
 
   </div>
@@ -59,10 +69,10 @@ export default function GestoriaPage() {
 </aside>
 
 
-{/* Conteúdo */}
-<section className="flex-1 p-8">
+{/* Conteúdo do topo */}
+<section className="flex-1 p-4">
 
-  {/* Topo */}
+  {/* Topo da página */}
   <div className="flex items-center justify-between mb-8">
 
     <div>
@@ -81,7 +91,7 @@ export default function GestoriaPage() {
 
   </div>
 
-  {/* Cards */}
+  {/* Cards do topo */}
 <div className="grid grid-cols-3 gap-6 mb-8">
 
   <div className="bg-white p-6 rounded-2xl shadow">
@@ -119,7 +129,7 @@ export default function GestoriaPage() {
 {/* Área principal */}
 <div className="grid grid-cols-3 gap-6 mb-8">
 
-  {/* Quadro de horários */}
+  {/* Quadro de horários do dia*/}
   <div className="col-span-2 bg-white rounded-2xl shadow p-6">
 
     <div className="flex items-center justify-between mb-6">
@@ -195,7 +205,7 @@ export default function GestoriaPage() {
   {/* Painel lateral */}
   <div className="flex flex-col gap-6">
 
-    {/* Avaliações */}
+    {/* Avaliações docentes */}
     <div className="bg-white rounded-2xl shadow p-6">
 
       <h2 className="text-xl font-bold text-gray-800 mb-5">
