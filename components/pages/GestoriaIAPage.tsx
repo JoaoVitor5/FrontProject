@@ -174,7 +174,7 @@ export default function GestoriaIAPage() {
         {/* Topo */}
         <div className="flex items-center justify-between mb-8">
 
-          <div>
+          <div className="ml-6">
             <h1 className="text-4xl font-bold text-gray-800">
               Gestoria IA
             </h1>
