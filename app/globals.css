@@ -65,6 +65,8 @@ nav.no-underline::after {
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
 }
 
+/* cadastro */
+
 .shine-button::before {
   content: "";
   position: absolute;

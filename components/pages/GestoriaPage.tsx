@@ -27,16 +27,30 @@ export default function GestoriaPage() {
     {/* Navegação da Navbar */}
     <nav className="no-underline flex flex-col p-4 gap-2">
 
-      <button className="sidebar-button">
+      <button className="sidebar-button bg-blue-600 text-white">
          Dashboard
+      </button>
+
+      <button 
+        onClick={() => router.push("/gestoriaIA")}
+        className="sidebar-button">
+         GestoriaIA
       </button>
 
       <button className="sidebar-button">
          Horários
       </button>
 
-      <button className="sidebar-button">
-         Corpo Docente
+      <button
+        className="sidebar-button"
+        onClick={() => {
+          window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: "smooth"
+          });
+        }}
+      >
+        Atividades Recentes
       </button>
 
       <button className="sidebar-button">
@@ -84,6 +98,7 @@ export default function GestoriaPage() {
         Visão geral acadêmica
       </p>
     </div>
+
     {/* Data atual */}
     <div className="bg-white px-4 py-2 rounded-xl shadow">
   📅 {new Date().toLocaleDateString("pt-BR")}

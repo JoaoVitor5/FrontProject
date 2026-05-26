@@ -60,7 +60,9 @@ export default function GestoriaIAPage() {
           {/* Navegação */}
           <nav className="no-underline flex flex-col p-4 gap-2">
 
-            <button className="sidebar-button">
+            <button
+            onClick={() => router.push("/gestoria")}
+            className="sidebar-button">
               Dashboard
             </button>
 
@@ -72,8 +74,16 @@ export default function GestoriaIAPage() {
               Horários
             </button>
 
-            <button className="sidebar-button">
-              Insights
+            <button
+              className="sidebar-button"
+              onClick={() => {
+                window.scrollTo({
+                  top: document.body.scrollHeight,
+                  behavior: "smooth"
+                });
+              }}
+            >
+              Controle Inteligente de Grade
             </button>
 
             <button className="sidebar-button">
@@ -152,7 +162,7 @@ export default function GestoriaIAPage() {
 
       <div className="text-right">
         <p className="font-semibold text-gray-800">
-          Dr. Eduardo Silveira
+          Eduardo Silveira
         </p>
 
         <p className="text-sm text-blue-600 font-medium">
