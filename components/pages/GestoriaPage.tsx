@@ -16,7 +16,7 @@ export default function GestoriaPage() {
   <div>
 
     {/* Logo */}
-    <div className="p-6">
+    <div className="p-6 flex justify-center">
       <img
         src="/eniac-logo.png"
         alt="Logo ENIAC"
@@ -37,12 +37,7 @@ export default function GestoriaPage() {
          GestoriaIA
       </button>
 
-      <button className="sidebar-button">
-         Horários
-      </button>
-
-      <button
-        className="sidebar-button"
+      <button className="sidebar-button"
         onClick={() => {
           window.scrollTo({
             top: document.body.scrollHeight,
@@ -51,14 +46,6 @@ export default function GestoriaPage() {
         }}
       >
         Atividades Recentes
-      </button>
-
-      <button className="sidebar-button">
-         Alunos
-      </button>
-
-      <button className="sidebar-button">
-         Avaliações
       </button>
 
     </nav>
@@ -87,7 +74,7 @@ export default function GestoriaPage() {
 <section className="flex-1 p-4">
 
   {/* Topo da página */}
-  <div className="flex items-center justify-between mb-8">
+  <div className="flex items-center justify-between mb-4">
 
     <div>
       <h1 className="text-3xl font-bold text-gray-800">
@@ -107,7 +94,7 @@ export default function GestoriaPage() {
   </div>
 
   {/* Cards do topo */}
-<div className="grid grid-cols-3 gap-6 mb-8">
+<div className="grid grid-cols-3 gap-4 mb-4">
 
   <div className="bg-white p-6 rounded-2xl shadow">
     <p className="text-gray-500 text-sm">
@@ -142,7 +129,7 @@ export default function GestoriaPage() {
 </div>
 
 {/* Área principal */}
-<div className="grid grid-cols-3 gap-6 mb-8">
+<div className="grid grid-cols-3 gap-4 mb-4">
 
   {/* Quadro de horários do dia*/}
   <div className="col-span-2 bg-white rounded-2xl shadow p-6">
@@ -218,7 +205,7 @@ export default function GestoriaPage() {
   </div>
 
   {/* Painel lateral */}
-  <div className="flex flex-col gap-6">
+  <div className="flex flex-col gap-4">
 
     {/* Avaliações docentes */}
     <div className="bg-white rounded-2xl shadow p-6">

@@ -49,7 +49,7 @@ export default function GestoriaIAPage() {
         <div>
 
           {/* Logo */}
-          <div className="p-6">
+          <div className="p-6 flex justify-center">
             <img
               src="/eniac-logo.png"
               alt="Logo ENIAC"
@@ -70,10 +70,6 @@ export default function GestoriaIAPage() {
               Gestoria IA
             </button>
 
-            <button className="sidebar-button">
-              Horários
-            </button>
-
             <button
               className="sidebar-button"
               onClick={() => {
@@ -84,10 +80,6 @@ export default function GestoriaIAPage() {
               }}
             >
               Controle Inteligente de Grade
-            </button>
-
-            <button className="sidebar-button">
-              Estatísticas
             </button>
 
           </nav>
@@ -182,7 +174,7 @@ export default function GestoriaIAPage() {
 </header>
 
         {/* Topo */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-4">
 
           <div className="ml-6">
             <h1 className="text-4xl font-bold text-gray-800">
@@ -202,7 +194,7 @@ export default function GestoriaIAPage() {
         </div>
 
     {/* Cards IA */}
-<div className="grid grid-cols-4 gap-6">
+<div className="grid grid-cols-4 gap-4">
 
   {/* Card 1 */}
   <div className="bg-white rounded-2xl shadow-md p-6">
@@ -288,7 +280,7 @@ export default function GestoriaIAPage() {
 </div>
 
 {/* Feed IA + Insights */}
-<div className="grid grid-cols-3 gap-6 mt-8">
+<div className="grid grid-cols-3 gap-4 mt-4">
 
   {/* Feed IA */}
   <div className="col-span-2 bg-white rounded-2xl shadow-md p-6">
@@ -384,7 +376,7 @@ export default function GestoriaIAPage() {
   </div>
 
   {/* Insights */}
-  <div className="flex flex-col gap-6">
+  <div className="flex flex-col gap-4">
 
     {/* Insight 1 */}
     <div className="bg-white rounded-2xl shadow-md p-6">
@@ -408,7 +400,7 @@ export default function GestoriaIAPage() {
     </div>
 
     {/* Insight 2 */}
-    <div className="bg-white rounded-2xl shadow-md p-6">
+    <div className="bg-white rounded-2xl shadow-md p-11">
 
       <h3 className="font-semibold text-blue-600 mb-2">
         Otimização de Espaço
@@ -429,7 +421,7 @@ export default function GestoriaIAPage() {
 </div>
 
 {/* Painel IA de Alterações */}
-<div className="bg-white rounded-2xl shadow-md p-6 mt-8">
+<div className="bg-white rounded-2xl shadow-md p-6 mt-4">
 
   {/* Cabeçalho */}
   <div className="flex items-center justify-between mb-6">
