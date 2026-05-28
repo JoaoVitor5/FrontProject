@@ -2,6 +2,12 @@
 
 import { useRouter } from "next/navigation";
 
+import {
+  BellIcon,
+  Cog6ToothIcon,
+  MagnifyingGlassIcon,
+} from "@heroicons/react/24/outline";
+
 export default function GestoriaPage() {
 
     const router = useRouter();
@@ -72,6 +78,50 @@ export default function GestoriaPage() {
 
 {/* Conteúdo do topo */}
 <section className="flex-1 p-4">
+
+  {/* Topbar */}
+<header className="h-20 bg-white rounded-2xl shadow-sm px-6 flex items-center justify-between mb-6">
+
+  {/* Lado esquerdo */}
+  <div className="flex items-center gap-6">
+
+    {/* Título */}
+    <div>
+      <h1 className="text-2xl font-bold text-gray-800">
+        Navegação Gestoria
+      </h1>
+    </div>
+
+    {/* Barra de pesquisa */}
+    <div className="relative">
+      <input
+        type="text"
+        placeholder="Pesquisar registros..."
+        className="w-72 pl-10 pr-4 py-2 rounded-xl border border-gray-300 bg-gray-50 outline-none focus:border-blue-500"
+      />
+
+      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+        <MagnifyingGlassIcon className="w-5 h-5" />
+      </span>
+    </div>
+
+  </div>
+
+  {/* Lado direito */}
+  <div className="flex items-center gap-5">
+
+    {/* Ícones */}
+    <button className="text-xl cursor-pointer">
+      <BellIcon className="w-5 h-5" />
+    </button>
+
+    <button className="text-xl cursor-pointer">
+      <Cog6ToothIcon className="w-5 h-5" />
+    </button>
+
+  </div>
+  
+  </header>
 
   {/* Topo da página */}
   <div className="flex items-center justify-between mb-4">

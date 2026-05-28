@@ -4,7 +4,8 @@ import {
   BellIcon,
   Cog6ToothIcon,
   MagnifyingGlassIcon,
-  UserCircleIcon
+  ArrowDownTrayIcon,
+  PrinterIcon,
 } from "@heroicons/react/24/outline";
 
 import { useEffect, useState } from "react";
@@ -40,7 +41,7 @@ export default function GestoriaIAPage() {
 
   return (
 
-    <main className="flex min-h-screen bg-gray-200">
+    <main className="flex min-h-screen bg-gray-300">
 
       {/* Sidebar */}
       <aside className="w-64 h-[95vh] sticky top-4 ml-4 bg-white shadow-x1 rounded-2xl flex flex-col justify-between">
@@ -115,7 +116,7 @@ export default function GestoriaIAPage() {
     {/* Título */}
     <div>
       <h1 className="text-2xl font-bold text-gray-800">
-        Secretaria IA
+        Navegação Gestoria
       </h1>
     </div>
 
@@ -145,29 +146,6 @@ export default function GestoriaIAPage() {
     <button className="text-xl cursor-pointer">
       <Cog6ToothIcon className="w-5 h-5" />
     </button>
-
-      {/* Linha vertical */}
-    <div className="w-px h-10 bg-gray-500"></div>
-
-    {/* Usuário */}
-    <div className="flex items-center gap-3">
-
-      <div className="text-right">
-        <p className="font-semibold text-gray-800">
-          Eduardo Silveira
-        </p>
-
-        <p className="text-sm text-blue-600 font-medium">
-          DIRETORIA EXECUTIVA
-        </p>
-      </div>
-
-      {/* Avatar */}
-      <div className="w-12 h-12 rounded-full bg-blue-500">
-        <UserCircleIcon className="w-12 h-12 text-white" />
-      </div>
-
-    </div>
 
   </div>
 
@@ -436,9 +414,19 @@ export default function GestoriaIAPage() {
       </p>
     </div>
 
+<div className="flex items-center gap-3">
+    <button className="bg-gray-300 px-1 py-1  hover:bg-gray-400 transition cursor-pointer text-xl rounded-full">
+    <PrinterIcon className="w-5 h-5" />
+    </button>
+
+    <button className="bg-gray-300 px-1 py-1 hover:bg-gray-400 transition cursor-pointer text-xl rounded-full">
+    <ArrowDownTrayIcon className="w-5 h-5" />
+    </button>
+
     <span className="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold">
       IA SINCRONIZADA
     </span>
+</div>
 
   </div>
 
@@ -523,8 +511,25 @@ export default function GestoriaIAPage() {
   {/* Barra Inferior IA */}
 <div className="mt-8 flex flex-col gap-4">
 
+      {/* Campo chat IA */}
+  <div className="bg-gray-300 rounded-3xl shadow-md p-3 flex items-center gap-3">
+
+    <input
+      type="text"
+      placeholder="Pergunte algo à Secretaria IA..."
+      className="flex-1 bg-transparent outline-none px-3 text-gray-900"
+    />
+
+    <button className="bg-blue-600 hover:bg-blue-700 transition-all duration-300 text-white px-5 py-2 rounded-2xl font-semibold cursor-pointer">
+      Enviar
+    </button>
+
+  </div>
+
   {/* Cards inferiores */}
   <div className="grid grid-cols-4 gap-4">
+
+    
 
     {/* Rede */}
     <div className="bg-white rounded-3xl shadow-md p-4">
@@ -572,20 +577,7 @@ export default function GestoriaIAPage() {
 
   </div>
 
-  {/* Campo IA */}
-  <div className="bg-gray-300 rounded-3xl shadow-md p-3 flex items-center gap-3">
 
-    <input
-      type="text"
-      placeholder="Pergunte algo à Secretaria IA..."
-      className="flex-1 bg-transparent outline-none px-3 text-gray-900"
-    />
-
-    <button className="bg-blue-600 hover:bg-blue-700 transition-all duration-300 text-white px-5 py-2 rounded-2xl font-semibold cursor-pointer">
-      Enviar
-    </button>
-
-  </div>
 
 </div>
 
