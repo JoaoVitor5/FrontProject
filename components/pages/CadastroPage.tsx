@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import {
   EyeIcon,
@@ -11,6 +12,20 @@ export default function CadastroPage() {
 
   const [perfil, setPerfil] = useState("professor");
   const [mostrarSenha, setMostrarSenha] = useState(false);
+  const [senha, setSenha] = useState("");
+
+  const router = useRouter();
+
+  function entrarSistema() {
+
+  if (senha === "gg") {
+    router.push("/gestoria");
+  }
+
+  else {
+    alert("Senha incorreta");
+  }
+}
 
 return (
     <main className="h-screen flex items-center justify-center bg-gray-500 px-5 py-10">
@@ -78,6 +93,8 @@ return (
     type={mostrarSenha ? "text" : "password"}
     placeholder="Senha"
     maxLength={5}
+    value={senha}
+    onChange={(e) => setSenha(e.target.value)}
     className="w-full p-4 rounded-[10px] border border-gray-300 text-base outline-none bg-gray-50"
   />
 
@@ -95,7 +112,7 @@ return (
 
 </div>
 
-          <button className="shine-button">
+          <button onClick={entrarSistema} className="shine-button">
             Entrar no Sistema
           </button>
 
