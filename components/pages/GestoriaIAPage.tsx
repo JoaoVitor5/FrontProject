@@ -6,6 +6,8 @@ import {
   MagnifyingGlassIcon,
   ArrowDownTrayIcon,
   PrinterIcon,
+  MoonIcon,
+  SunIcon,
 } from "@heroicons/react/24/outline";
 
 import { useEffect, useState } from "react";
@@ -13,6 +15,10 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function GestoriaIAPage() {
+
+    /* constante do modo escuro e diurno */
+
+const [darkMode, setDarkMode] = useState(false);
 
     /* constante do relógio */
 
@@ -41,20 +47,32 @@ export default function GestoriaIAPage() {
 
   return (
 
-    <main className="flex min-h-screen bg-gray-300">
+    <main
+  className={`flex min-h-screen transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-900"
+      : "bg-gray-300"
+  }`}
+>
 
       {/* Sidebar */}
-      <aside className="w-64 h-[95vh] sticky top-4 ml-4 bg-white shadow-x1 rounded-2xl flex flex-col justify-between">
+      <aside
+  className={`w-64 h-[95vh] sticky top-4 ml-4 rounded-2xl flex flex-col justify-between transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-800 text-white"
+      : "bg-white text-gray-800"
+  }`}
+>
 
         {/* Parte superior */}
         <div>
 
           {/* Logo */}
-          <div className="p-6 flex justify-center">
+          <div className="h-16 flex items-center justify-center">
             <img
-              src="/eniac-logo.png"
+              src={darkMode ? "/eniac-logo-branca.png" : "/eniac-logo.png"}
               alt="Logo ENIAC"
-              className="w-40"
+                className="max-h-12 w-40 object-contain"
             />
           </div>
 
@@ -108,16 +126,27 @@ export default function GestoriaIAPage() {
       <section className="flex-1 p-4">
 
         {/* Topbar */}
-<header className="h-20 bg-white rounded-2xl shadow-sm px-6 flex items-center justify-between mb-6">
+<header className={`h-20 rounded-2xl shadow-sm px-6 flex items-center justify-between mb-6 transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-800 text-white"
+      : "bg-white text-gray-800"
+  }`}
+>
 
   {/* Lado esquerdo */}
   <div className="flex items-center gap-6">
 
     {/* Título */}
     <div>
-      <h1 className="text-2xl font-bold text-gray-800">
-        Navegação Gestoria
-      </h1>
+<h1
+  className={`text-2xl font-bold ${
+    darkMode 
+    ? "text-white" 
+    : "text-gray-800"
+  }`}
+>
+  Navegação Gestoria
+</h1>
     </div>
 
     {/* Barra de pesquisa */}
@@ -125,7 +154,11 @@ export default function GestoriaIAPage() {
       <input
         type="text"
         placeholder="Pesquisar registros..."
-        className="w-72 pl-10 pr-4 py-2 rounded-xl border border-gray-300 bg-gray-50 outline-none focus:border-blue-500"
+        className={`w-72 pl-10 pr-4 py-2 rounded-xl border outline-none focus:border-blue-500 ${
+  darkMode
+    ? "bg-gray-700 border-gray-600 text-white"
+    : "bg-gray-50 border-gray-300 text-gray-800"
+}`}
       />
 
       <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
@@ -139,6 +172,18 @@ export default function GestoriaIAPage() {
   <div className="flex items-center gap-5">
 
     {/* Ícones */}
+
+    <button
+  onClick={() => setDarkMode(!darkMode)}
+  className="px-1 py-1  bg-gray-500 text-xl cursor-pointer rounded-full"
+>
+  {darkMode ? (
+    <SunIcon className="w-5 h-5" />
+  ) : (
+    <MoonIcon className="w-5 h-5" />
+  )}
+</button>
+
     <button className="text-xl cursor-pointer">
       <BellIcon className="w-5 h-5" />
     </button>
@@ -155,17 +200,30 @@ export default function GestoriaIAPage() {
         <div className="flex items-center justify-between mb-4">
 
           <div className="ml-6">
-            <h1 className="text-4xl font-bold text-gray-800">
+            <h1
+            className={`text-4xl font-bold ${
+            darkMode ? "text-white" : "text-gray-800"
+            }`}
+>
               Gestoria IA
             </h1>
 
-            <p className="text-gray-500 mt-1">
+            <p
+            className={`mt-1 ${
+            darkMode ? "text-gray-300" : "text-gray-700"
+            }`}
+>
               Central inteligente de gerenciamento acadêmico
             </p>
           </div>
 
            {/* Data atual */}
-    <div className="bg-white px-4 py-2 rounded-xl shadow">
+    <div className={`px-4 py-2 rounded-xl shadow transition-colors duration-300 ${
+        darkMode
+        ? "bg-gray-800 text-white"
+        : "bg-white text-gray-800"
+        }`}
+>
   📅 {new Date().toLocaleDateString("pt-BR")}
     </div>
 
@@ -175,11 +233,16 @@ export default function GestoriaIAPage() {
 <div className="grid grid-cols-4 gap-4">
 
   {/* Card 1 */}
-  <div className="bg-white rounded-2xl shadow-md p-6">
+  <div  className={`rounded-2xl shadow-md p-6 transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-800 text-white"
+      : "bg-white text-gray-800"
+    }`}
+>
 
     <div className="flex items-center justify-between mb-4">
 
-      <h2 className="text-gray-500 font-medium">
+      <h2 className="font-medium">
         Fluxo de Alunos
       </h2>
 
@@ -189,11 +252,11 @@ export default function GestoriaIAPage() {
 
     </div>
 
-    <h1 className="text-5xl font-bold text-gray-800 mb-2">
+    <h1 className="text-5xl font-bold mb-2">
       85%
     </h1>
 
-    <p className="text-sm text-gray-500 mb-4">
+    <p className="text-sm  mb-4">
       Alunos previstos para entrada hoje
     </p>
 
@@ -207,9 +270,14 @@ export default function GestoriaIAPage() {
   </div>
 
   {/* Card 2 */}
-  <div className="bg-white rounded-2xl shadow-md p-6">
+  <div   className={`rounded-2xl shadow-md p-6 transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-800 text-white"
+      : "bg-white text-gray-800"
+    }`}
+>
 
-    <h2 className="text-gray-500 font-medium mb-4">
+    <h2 className="font-medium mb-4">
       Processamento IA
     </h2>
 
@@ -217,16 +285,21 @@ export default function GestoriaIAPage() {
       Otimizado
     </h1>
 
-    <p className="text-sm text-gray-500">
+    <p className="text-sm">
       Latência: 1.2s
     </p>
 
   </div>
 
   {/* Card 3 */}
-  <div className="bg-white rounded-2xl shadow-md p-6">
+  <div   className={`rounded-2xl shadow-md p-6 transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-800 text-white"
+      : "bg-white text-gray-800"
+    }`}
+>
 
-    <h2 className="text-gray-500 font-medium mb-4">
+    <h2 className="font-medium mb-4">
       Alertas Ativos
     </h2>
 
@@ -237,18 +310,23 @@ export default function GestoriaIAPage() {
   </div>
 
   {/* Card 4 */}
-  <div className="bg-white rounded-2xl shadow-md p-6">
+  <div className={`rounded-2xl shadow-md p-6 transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-800 text-white"
+      : "bg-white text-gray-800"
+    }`}
+>
 
-    <h2 className="text-gray-500 font-medium mb-4">
-      Decisões IA
+    <h2 className="font-medium mb-4">
+      Solicitações IA
     </h2>
 
     <h1 className="text-5xl font-bold text-purple-600">
       124
     </h1>
 
-    <p className="text-sm text-gray-500 mt-2">
-      Ações automáticas hoje
+    <p className="text-sm mt-2">
+      Ações efetuadas hoje
     </p>
 
   </div>
@@ -257,16 +335,22 @@ export default function GestoriaIAPage() {
 
 </div>
 
-{/* Feed IA + Insights */}
+{/* Feed IA + Avisos */}
 <div className="grid grid-cols-3 gap-4 mt-4">
 
   {/* Feed IA */}
-  <div className="col-span-2 bg-white rounded-2xl shadow-md p-6">
+  <div
+  className={`col-span-2 rounded-2xl shadow-md p-6 transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-800 text-white"
+      : "bg-white text-gray-800"
+    }`}
+>
 
     {/* Cabeçalho */}
     <div className="flex items-center justify-between mb-6">
 
-      <h2 className="text-2xl font-bold text-gray-800">
+      <h2 className="text-2xl font-bold">
         Feed de Atividades IA
       </h2>
 
@@ -282,7 +366,7 @@ export default function GestoriaIAPage() {
       <div className="flex items-center justify-between">
 
         <h3 className="font-bold text-gray-800">
-          Prof. Lucio Luzetti informou ausência
+          Prof. Lucio Luzetti informou ausência na aula de hoje
         </h3>
 
         <span className="text-sm text-gray-800">
@@ -315,7 +399,7 @@ export default function GestoriaIAPage() {
       <div className="flex items-center justify-between">
 
         <h3 className="font-bold text-gray-800">
-          Sala 23-B liberada prematuramente
+          Prof. Marcos Cárfora reagendou aula do dia 26/08 para 28/08
         </h3>
 
         <span className="text-sm text-gray-800">
@@ -325,7 +409,7 @@ export default function GestoriaIAPage() {
       </div>
 
       <p className="text-gray-500 mt-2">
-        IA detectou baixa ocupação e sugeriu otimização de espaço.
+        Calendário alterado automaticamente
       </p>
 
     </div>
@@ -336,39 +420,45 @@ export default function GestoriaIAPage() {
       <div className="flex items-center justify-between">
 
         <h3 className="font-bold text-gray-800">
-          Relatório semanal processado
+          Prof. Lucio Luzetti declarou futura falta na aula do dia 16/10
         </h3>
 
         <span className="text-sm text-gray-800">
-          2h
+          24h
         </span>
 
       </div>
 
       <p className="text-gray-500 mt-2">
-        Insights administrativos atualizados automaticamente.
+        Calendário alterado automaticamente
       </p>
 
     </div>
 
   </div>
 
-  {/* Insights */}
+  {/* Avisos */}
   <div className="flex flex-col gap-4">
 
-    {/* Insight 1 */}
-    <div className="bg-white rounded-2xl shadow-md p-6">
+    {/* Atrasos */}
+    <div
+className={`rounded-2xl shadow-md p-6 transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-800 text-white"
+      : "bg-white text-gray-800"
+  }`}
+>
 
-      <h2 className="text-xl font-bold text-gray-800 mb-4">
-        Insights IA
+      <h2 className="text-xl font-bold mb-4">
+        Atrasos
       </h2>
 
       <h3 className="font-semibold text-orange-500 mb-2">
-        Atraso em Projetos
+        Avaliações em atraso
       </h3>
 
-      <p className="text-gray-500 text-sm mb-4">
-        3 departamentos estão acima do tempo médio esperado.
+      <p className="text-sm mb-4">
+        3 disciplinas estão com as notas de avaliações atrasadas.
       </p>
 
       <button className="w-full bg-orange-100 text-orange-600 py-2 rounded-xl hover:bg-orange-200 transition cursor-pointer">
@@ -377,49 +467,71 @@ export default function GestoriaIAPage() {
 
     </div>
 
-    {/* Insight 2 */}
-    <div className="bg-white rounded-2xl shadow-md p-11">
+    {/* Solicitação prof. */}
+    <div className={`rounded-2xl shadow-md p-6 transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-800 text-white"
+      : "bg-white text-gray-800"
+  }`}
+>
+        <h2 className="text-xl font-bold mb-4">
+        Solicitações IA (Prof.)
+        </h2>
 
       <h3 className="font-semibold text-blue-600 mb-2">
-        Otimização de Espaço
+        Solicitações feitas hoje
       </h3>
 
       <p className="text-gray-500 text-sm mb-4">
-        Laboratórios estão com baixa utilização nesta semana.
+        43 Solicitações de mudança de horário IA feita pelos professores nas últimas 24 horas.
       </p>
 
       <button className="w-full bg-blue-100 text-blue-600 py-2 rounded-xl hover:bg-blue-200 transition cursor-pointer">
-        Ver Proposta
+        Ver Detalhes
       </button>
 
-    </div>
 
   </div>
 
 </div>
 
+  </div>
+
 {/* Painel IA de Alterações */}
-<div className="bg-white rounded-2xl shadow-md p-6 mt-4">
+<div
+  className={`rounded-2xl shadow-md p-6 mt-4 transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-800 text-white"
+      : "bg-white text-gray-800"
+    }`}
+>
 
   {/* Cabeçalho */}
   <div className="flex items-center justify-between mb-6">
 
     <div>
-      <h2 className="text-2xl font-bold text-gray-800">
+      <h2 className="text-2xl font-bold">
         Controle Inteligente de Grade
       </h2>
 
-      <p className="text-gray-500">
+       <p
+        className={`mt-1 ${
+        darkMode 
+            ? "text-gray-300" 
+            : "text-gray-700"
+            }`}
+>
         Alterações automáticas sugeridas pela IA
       </p>
+
     </div>
 
 <div className="flex items-center gap-3">
-    <button className="bg-gray-300 px-1 py-1  hover:bg-gray-400 transition cursor-pointer text-xl rounded-full">
+    <button className="px-1 py-1  hover:bg-gray-500 transition cursor-pointer text-xl rounded-full">
     <PrinterIcon className="w-5 h-5" />
     </button>
 
-    <button className="bg-gray-300 px-1 py-1 hover:bg-gray-400 transition cursor-pointer text-xl rounded-full">
+    <button className="px-1 py-1 hover:bg-gray-500 transition cursor-pointer text-xl rounded-full">
     <ArrowDownTrayIcon className="w-5 h-5" />
     </button>
 
@@ -532,30 +644,48 @@ export default function GestoriaIAPage() {
     
 
     {/* Rede */}
-    <div className="bg-white rounded-3xl shadow-md p-4">
-      <p className="text-sm text-gray-500">
-        REDE
+    <div
+  className={`rounded-3xl shadow-md p-4 transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-700 text-white"
+      : "bg-white text-gray-800"
+    }`}
+>
+      <p className="text-sm ">
+        Solicitações IA hoje
       </p>
 
-      <h3 className="text-xl font-bold text-blue-600 mt-1">
-        Ativa (99.8%)
+      <h3 className="text-xl font-bold text-purple-600 mt-1">
+        124
       </h3>
     </div>
 
     {/* Energia */}
-    <div className="bg-white rounded-3xl shadow-md p-4">
-      <p className="text-sm text-gray-500">
-        ENERGIA
+        <div
+  className={`rounded-3xl shadow-md p-4 transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-700 text-white"
+      : "bg-white text-gray-800"
+    }`}
+>
+      <p className="text-sm ">
+        Processamento IA
       </p>
 
       <h3 className="text-xl font-bold text-green-600 mt-1">
-        +12% Mês
+        Otimizado
       </h3>
     </div>
 
     {/* Relatórios */}
-    <div className="bg-white rounded-3xl shadow-md p-4">
-      <p className="text-sm text-gray-500">
+    <div
+  className={`rounded-3xl shadow-md p-4 transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-700 text-white"
+      : "bg-white text-gray-800"
+    }`}
+>
+      <p className="text-sm">
         RELATÓRIOS
       </p>
 
@@ -565,12 +695,18 @@ export default function GestoriaIAPage() {
     </div>
 
     {/* Relógio */}
-    <div className="bg-white rounded-3xl shadow-md p-4">
-      <p className="text-sm text-gray-500">
+        <div
+  className={`rounded-3xl shadow-md p-4 transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-700 text-white"
+      : "bg-white text-gray-800"
+    }`}
+>
+      <p className="text-sm">
         SINCRONIZAÇÃO
       </p>
 
-      <h3 className="text-xl font-bold text-gray-700 mt-1">
+      <h3 className="text-xl font-bold mt-1">
         {horaAtual}
       </h3>
     </div>

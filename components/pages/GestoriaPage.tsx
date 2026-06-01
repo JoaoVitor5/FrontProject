@@ -6,9 +6,17 @@ import {
   BellIcon,
   Cog6ToothIcon,
   MagnifyingGlassIcon,
+  MoonIcon,
+  SunIcon,
 } from "@heroicons/react/24/outline";
 
+import { useState } from "react";
+
 export default function GestoriaPage() {
+
+     /* constante do modo escuro e diurno */
+    
+    const [darkMode, setDarkMode] = useState(false);
 
     const router = useRouter();
 
@@ -110,6 +118,17 @@ export default function GestoriaPage() {
   {/* Lado direito */}
   <div className="flex items-center gap-5">
 
+        <button
+  onClick={() => setDarkMode(!darkMode)}
+  className="text-xl cursor-pointer"
+>
+  {darkMode ? (
+    <SunIcon className="w-5 h-5" />
+  ) : (
+    <MoonIcon className="w-5 h-5" />
+  )}
+</button>
+
     {/* Ícones */}
     <button className="text-xl cursor-pointer">
       <BellIcon className="w-5 h-5" />
@@ -120,7 +139,7 @@ export default function GestoriaPage() {
     </button>
 
   </div>
-  
+
   </header>
 
   {/* Topo da página */}
