@@ -22,21 +22,34 @@ export default function GestoriaPage() {
 
   return (
 
-    <main className="flex min-h-screen bg-gray-300">
+    <main
+  className={`flex min-h-screen transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-900"
+      : "bg-gray-300"
+  }`}
+>
 
-      {/* Sidebar */}
-<aside className="w-64 h-[95vh] sticky top-4 ml-4 bg-white shadow-x1 rounded-2xl flex flex-col justify-between">
+     {/* Sidebar */}
+      <aside
+  className={`w-64 h-[95vh] sticky top-4 ml-4 rounded-2xl flex flex-col justify-between transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-800 text-white"
+      : "bg-white text-gray-800"
+  }`}
+>
 
-  <div>
+   {/* Parte superior */}
+        <div>
 
-    {/* Logo */}
-    <div className="p-6 flex justify-center">
-      <img
-        src="/eniac-logo.png"
-        alt="Logo ENIAC"
-        className="w-40"
-      />
-    </div>
+          {/* Logo */}
+          <div className="h-16 flex items-center justify-center">
+            <img
+              src={darkMode ? "/eniac-logo-branca.png" : "/eniac-logo.png"}
+              alt="Logo ENIAC"
+                className="max-h-12 w-40 object-contain"
+            />
+          </div>
 
     {/* Navegação da Navbar */}
     <nav className="no-underline flex flex-col p-4 gap-2">
@@ -59,7 +72,7 @@ export default function GestoriaPage() {
           });
         }}
       >
-        Atividades Recentes
+        Fim da página
       </button>
 
     </nav>
@@ -87,15 +100,19 @@ export default function GestoriaPage() {
 {/* Conteúdo do topo */}
 <section className="flex-1 p-4">
 
-  {/* Topbar */}
-<header className="h-20 bg-white rounded-2xl shadow-sm px-6 flex items-center justify-between mb-6">
-
+ {/* Topbar */}
+<header className={`h-20 rounded-2xl shadow-sm px-6 flex items-center justify-between mb-6 transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-800 text-white"
+      : "bg-white text-gray-800"
+  }`}
+>
   {/* Lado esquerdo */}
   <div className="flex items-center gap-6">
 
     {/* Título */}
     <div>
-      <h1 className="text-2xl font-bold text-gray-800">
+      <h1 className="text-2xl font-bold">
         Navegação Gestoria
       </h1>
     </div>
@@ -105,7 +122,11 @@ export default function GestoriaPage() {
       <input
         type="text"
         placeholder="Pesquisar registros..."
-        className="w-72 pl-10 pr-4 py-2 rounded-xl border border-gray-300 bg-gray-50 outline-none focus:border-blue-500"
+        className={`w-72 pl-10 pr-4 py-2 rounded-xl border outline-none focus:border-blue-500 ${
+  darkMode
+    ? "bg-gray-700 border-gray-600 text-white"
+    : "bg-gray-50 border-gray-300 text-gray-800"
+}`}
       />
 
       <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
@@ -118,9 +139,11 @@ export default function GestoriaPage() {
   {/* Lado direito */}
   <div className="flex items-center gap-5">
 
+{/* Ícones */}
+
         <button
   onClick={() => setDarkMode(!darkMode)}
-  className="text-xl cursor-pointer"
+  className="px-1 py-1  bg-gray-500 text-xl cursor-pointer rounded-full"
 >
   {darkMode ? (
     <SunIcon className="w-5 h-5" />
@@ -129,7 +152,6 @@ export default function GestoriaPage() {
   )}
 </button>
 
-    {/* Ícones */}
     <button className="text-xl cursor-pointer">
       <BellIcon className="w-5 h-5" />
     </button>
@@ -146,17 +168,33 @@ export default function GestoriaPage() {
   <div className="flex items-center justify-between mb-4">
 
     <div>
-      <h1 className="text-3xl font-bold text-gray-800">
-        Dashboard Gestoria
-      </h1>
+    <h1
+  className={`text-3xl font-bold ${
+    darkMode ? "text-white" : "text-gray-800"
+     }`}
+    >
+  Dashboard Gestoria
+    </h1>
 
-      <p className="text-gray-500">
-        Visão geral acadêmica
-      </p>
+<p
+  className={`${
+    darkMode ? "text-gray-300" : "text-gray-500"
+  }`}
+>
+  Visão geral acadêmica
+</p>
+
     </div>
 
     {/* Data atual */}
-    <div className="bg-white px-4 py-2 rounded-xl shadow">
+    <div
+  className={`px-4 py-2 rounded-xl shadow transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-800 text-white"
+      : "bg-white text-gray-800"
+  }`}
+>
+
   📅 {new Date().toLocaleDateString("pt-BR")}
     </div>
 
@@ -165,8 +203,18 @@ export default function GestoriaPage() {
   {/* Cards do topo */}
 <div className="grid grid-cols-3 gap-4 mb-4">
 
-  <div className="bg-white p-6 rounded-2xl shadow">
-    <p className="text-gray-500 text-sm">
+<div
+  className={`p-6 rounded-2xl shadow transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-800 text-white"
+      : "bg-white text-gray-800"
+  }`}
+>
+    <p
+     className={`text-sm ${
+    darkMode ? "text-gray-300" : "text-gray-500"
+    }`}
+    >
       Total de Alunos
     </p>
 
@@ -175,8 +223,19 @@ export default function GestoriaPage() {
     </h2>
   </div>
 
-  <div className="bg-white p-6 rounded-2xl shadow">
-    <p className="text-gray-500 text-sm">
+  <div
+  className={`p-6 rounded-2xl shadow transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-800 text-white"
+      : "bg-white text-gray-800"
+    }`}
+    >
+
+    <p
+  className={`text-sm ${
+    darkMode ? "text-gray-300" : "text-gray-500"
+    }`}
+    >
       Professores
     </p>
 
@@ -185,8 +244,19 @@ export default function GestoriaPage() {
     </h2>
   </div>
 
-  <div className="bg-white p-6 rounded-2xl shadow">
-    <p className="text-gray-500 text-sm">
+  <div
+  className={`p-6 rounded-2xl shadow transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-800 text-white"
+      : "bg-white text-gray-800"
+    }`}
+    >
+
+    <p
+  className={`text-sm ${
+    darkMode ? "text-gray-300" : "text-gray-500"
+    }`}
+    >
       Matérias
     </p>
 
@@ -201,11 +271,21 @@ export default function GestoriaPage() {
 <div className="grid grid-cols-3 gap-4 mb-4">
 
   {/* Quadro de horários do dia*/}
-  <div className="col-span-2 bg-white rounded-2xl shadow p-6">
+  <div
+  className={`col-span-2 rounded-2xl shadow p-6 transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-800 text-white"
+      : "bg-white text-gray-800"
+  }`}
+>
 
     <div className="flex items-center justify-between mb-6">
 
-      <h2 className="text-xl font-bold text-gray-800">
+      <h2
+  className={`text-xl font-bold ${
+    darkMode ? "text-white" : "text-gray-800"
+  }`}
+>
         Quadro de Horários do Dia
       </h2>
 
@@ -218,53 +298,77 @@ export default function GestoriaPage() {
     {/* Horários */}
     <div className="flex flex-col gap-5">
 
-      {/* Aula */}
+      {/* ativ.1 */}
       <div className="border-l-4 border-blue-500 pl-4">
 
         <p className="text-sm text-gray-400">
-          08:00
+          10:00
         </p>
 
-        <h3 className="font-bold text-gray-800">
-          Programação Android
+        <h3
+    className={`font-bold ${
+    darkMode ? "text-white" : "text-gray-800"
+    }`}
+    >   
+          Reunião Gestoria
         </h3>
 
-        <p className="text-gray-500 text-sm">
-          Prof. Lucio Luzetti • Sala 23-B
+        <p
+    className={`text-sm ${
+    darkMode ? "text-gray-300" : "text-gray-500"
+    }`}
+    >
+            Ecossistema
         </p>
 
       </div>
 
-      {/* Aula */}
+      {/* Ativ.2 */}
       <div className="border-l-4 border-green-500 pl-4">
-
-        <p className="text-sm text-gray-400">
-          10:15
-        </p>
-
-        <h3 className="font-bold text-gray-800">
-          Tecnologia Web
-        </h3>
-
-        <p className="text-gray-500 text-sm">
-          Profª Nelson Luzetti • Sala 22-B
-        </p>
-
-      </div>
-
-      {/* Aula */}
-      <div className="border-l-4 border-orange-500 pl-4">
 
         <p className="text-sm text-gray-400">
           12:15
         </p>
 
-        <h3 className="font-bold text-gray-800">
-          Metodologias Ágeis
+        <h3
+    className={`font-bold ${
+    darkMode ? "text-white" : "text-gray-800"
+    }`}
+    >
+          Palestra de Inovação
         </h3>
 
-        <p className="text-gray-500 text-sm">
-          Prof. Denilson Caraca • Sala 21-B
+        <p
+    className={`text-sm ${
+    darkMode ? "text-gray-300" : "text-gray-500"
+    }`}
+    >
+          Auditório
+        </p>
+
+      </div>
+
+      {/* Ativ.3 */}
+      <div className="border-l-4 border-orange-500 pl-4">
+
+        <p className="text-sm text-gray-400">
+          18:00
+        </p>
+
+        <h3
+    className={`font-bold ${
+    darkMode ? "text-white" : "text-gray-800"
+    }`}
+    >
+          Palestra de Marketing
+        </h3>
+
+        <p
+        className={`text-sm ${
+        darkMode ? "text-gray-300" : "text-gray-500"
+        }`}
+        >
+          Auditório
         </p>
 
       </div>
@@ -277,9 +381,15 @@ export default function GestoriaPage() {
   <div className="flex flex-col gap-4">
 
     {/* Avaliações docentes */}
-    <div className="bg-white rounded-2xl shadow p-6">
+    <div
+    className={`rounded-2xl shadow p-6 transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-800 text-white"
+      : "bg-white text-gray-800"
+    }`}
+    >
 
-      <h2 className="text-xl font-bold text-gray-800 mb-5">
+      <h2 className="text-xl font-bold mb-5">
         Avaliações Docentes
       </h2>
 
@@ -349,112 +459,154 @@ export default function GestoriaPage() {
 
 </div>
 
-    {/* Atividades Recentes */}
-<div className="bg-white rounded-2xl shadow p-6">
+    {/* Calendário de Eventos */}
+<div
+    className={`rounded-2xl shadow p-6 transition-colors duration-300 ${
+    darkMode
+      ? "bg-gray-800 text-white"
+      : "bg-white text-gray-800"
+    }`}
+    >
 
   {/* Cabeçalho */}
   <div className="flex items-center justify-between mb-6">
 
     <div>
-      <h2 className="text-2xl font-bold text-gray-800">
-        Atividades Recentes
+      <h2
+    className={`text-2xl font-bold ${
+    darkMode ? "text-white" : "text-gray-800"
+    }`}
+    >
+        Calendário Eventos
       </h2>
 
-      <p className="text-gray-500 text-sm">
+      <p
+    className={`text-sm ${
+    darkMode ? "text-gray-300" : "text-gray-500"
+    }`}
+    >
         Monitoramento administrativo
       </p>
     </div>
 
-    <button className="border border-gray-300 px-4 py-2 rounded-lg text-sm hover:bg-gray-100 transition cursor-pointer">
-      Histórico Completo
-    </button>
+<button
+  className={`px-4 py-2 rounded-lg text-sm border transition cursor-pointer ${
+    darkMode
+      ? "border-gray-600 text-white hover:bg-gray-700"
+      : "border-gray-300 text-gray-800 hover:bg-gray-100"
+  }`}
+>
+  Histórico Completo
+</button>
 
   </div>
 
   {/* Tabela */}
   <div className="overflow-x-auto">
 
-    <table className="w-full">
+    <table className="w-full table-fixed">
 
       <thead>
 
         <tr className="text-left text-gray-400 text-sm border-b">
 
-          <th className="pb-4">Solicitação</th>
+          <th className="pb-4">Evento</th>
 
-          <th className="pb-4">Departamento</th>
+          <th className="pb-4">Local</th>
 
           <th className="pb-4">Data</th>
 
-          <th className="pb-4">Status</th>
+          <th className="pb-4">Horário</th>
 
         </tr>
 
       </thead>
 
-      <tbody className="text-gray-700">
+      <tbody
+    className={`${
+    darkMode ? "text-gray-200" : "text-gray-700"
+    }`}
+    >
 
-        <tr className="border-b hover:bg-gray-50 transition">
+        <tr
+    className={`border-b transition ${
+    darkMode
+      ? "hover:bg-gray-700"
+      : "hover:bg-gray-50"
+    }`}
+    >
 
           <td className="py-5 font-medium">
-            Aprovação de Nova Verba Lab TI
+            Corpus Christi
           </td>
 
           <td>
-            Tecnologia da Informação
+            Feriado
           </td>
 
           <td>
-            Hoje, 09:12
+            04/06
           </td>
 
           <td>
-            <span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold">
-              Pendente
+            <span className="px-3 py-1 rounded-full text-sm font-semibold">
+              00:00 - 23:59
             </span>
           </td>
 
         </tr>
 
-        <tr className="border-b hover:bg-gray-50 transition">
+        <tr
+    className={`border-b transition ${
+    darkMode
+      ? "hover:bg-gray-700"
+      : "hover:bg-gray-50"
+    }`}
+    >
 
           <td className="py-5 font-medium">
-            Calendário Semestral 2026.2
+            Feirão do emprego Eniac
           </td>
 
           <td>
-            Secretaria Acadêmica
+            Eniac          
           </td>
 
           <td>
-            Ontem, 16:45
+            11/06 até 12/06
           </td>
 
           <td>
-            <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">
-              Aprovado
+            <span className="px-3 py-1 rounded-full text-sm font-semibold">
+              07:00 - 22:00
             </span>
           </td>
 
         </tr>
 
-        <tr className="hover:bg-gray-50 transition">
+        <tr
+    className={`border-b transition ${
+    darkMode
+      ? "hover:bg-gray-700"
+      : "hover:bg-gray-50"
+    }`}
+    >
 
           <td className="py-5 font-medium">
-            Renovação de Convênio Intercâmbio
+            Festa Junina do Eniac
           </td>
 
           <td>
-            Relações Internacionais
+            Eniac
           </td>
 
           <td>
-            22 Mai, 11:20
+            24/06
           </td>
 
           <td>
-            <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">
-              Finalizado
+            <span className="px-3 py-1 rounded-full text-sm font-semibold">
+              12:00 - 20:00
             </span>
           </td>
 

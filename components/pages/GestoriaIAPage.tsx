@@ -98,7 +98,7 @@ const [darkMode, setDarkMode] = useState(false);
                 });
               }}
             >
-              Controle Inteligente de Grade
+              Fim da página
             </button>
 
           </nav>
