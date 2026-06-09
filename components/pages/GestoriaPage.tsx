@@ -8,6 +8,8 @@ import {
   MagnifyingGlassIcon,
   MoonIcon,
   SunIcon,
+  Bars3Icon,
+  XMarkIcon,
 } from "@heroicons/react/24/outline";
 
 import { useState } from "react";
@@ -20,23 +22,40 @@ export default function GestoriaPage() {
 
     const router = useRouter();
 
+    const [menuOpen, setMenuOpen] = useState(false);
+
   return (
 
-    <main
-  className={`flex min-h-screen transition-colors duration-300 ${
-    darkMode
-      ? "bg-gray-900"
-      : "bg-gray-300"
+<main
+  className={`md:flex min-h-screen transition-colors duration-300 ${
+    darkMode ? "bg-gray-900" : "bg-gray-300"
   }`}
 >
 
      {/* Sidebar */}
-      <aside
-  className={`w-64 h-[95vh] sticky top-4 ml-4 rounded-2xl flex flex-col justify-between transition-colors duration-300 ${
-    darkMode
-      ? "bg-gray-800 text-white"
-      : "bg-white text-gray-800"
-  }`}
+     <aside
+  className={`
+    fixed md:sticky
+    top-0 md:top-4
+    left-0
+    z-50
+    h-screen md:h-[calc(100vh-2rem)]
+    w-64
+    ml-0 md:ml-4
+    rounded-2xl
+    flex flex-col justify-between
+    transition-all duration-300
+    ${
+      menuOpen
+        ? "translate-x-0"
+        : "-translate-x-full md:translate-x-0"
+    }
+    ${
+      darkMode
+        ? "bg-gray-800 text-white"
+        : "bg-white text-gray-800"
+    }
+  `}
 >
 
    {/* Parte superior */}
@@ -98,7 +117,7 @@ export default function GestoriaPage() {
 
 
 {/* Conteúdo do topo */}
-<section className="flex-1 p-4">
+<section className="flex-1 w-full p-4">
 
  {/* Topbar */}
 <header className={`h-20 rounded-2xl shadow-sm px-6 flex items-center justify-between mb-6 transition-colors duration-300 ${
@@ -106,12 +125,24 @@ export default function GestoriaPage() {
       ? "bg-gray-800 text-white"
       : "bg-white text-gray-800"
   }`}
->
+>    
   {/* Lado esquerdo */}
-  <div className="flex items-center gap-6">
+  <div className="flex items-center gap-3 md:gap-6">
+
+{/* botão abrir topbar para dispositivos móveis */}
+<button
+  onClick={() => setMenuOpen(!menuOpen)}
+  className="md:hidden"
+>
+  {menuOpen ? (
+    <XMarkIcon className="w-6 h-6" />
+  ) : (
+    <Bars3Icon className="w-6 h-6" />
+  )}
+</button>
 
     {/* Título */}
-    <div>
+    <div className="hidden md:block">
       <h1 className="text-2xl font-bold">
         Navegação Gestoria
       </h1>
@@ -122,7 +153,7 @@ export default function GestoriaPage() {
       <input
         type="text"
         placeholder="Pesquisar registros..."
-        className={`w-72 pl-10 pr-4 py-2 rounded-xl border outline-none focus:border-blue-500 ${
+        className={`w-40 sm:w-60 md:w-72 pl-10 pr-4 py-2 rounded-xl border outline-none focus:border-blue-500 ${
   darkMode
     ? "bg-gray-700 border-gray-600 text-white"
     : "bg-gray-50 border-gray-300 text-gray-800"
@@ -137,7 +168,7 @@ export default function GestoriaPage() {
   </div>
 
   {/* Lado direito */}
-  <div className="flex items-center gap-5">
+  <div className="flex items-center gap-2 md:gap-5">
 
 {/* Ícones */}
 
@@ -152,11 +183,11 @@ export default function GestoriaPage() {
   )}
 </button>
 
-    <button className="text-xl cursor-pointer">
+    <button className="text-xl cursor-pointer hidden md:block">
       <BellIcon className="w-5 h-5" />
     </button>
 
-    <button className="text-xl cursor-pointer">
+    <button className="text-xl cursor-pointer hidden md:block">
       <Cog6ToothIcon className="w-5 h-5" />
     </button>
 
@@ -165,7 +196,7 @@ export default function GestoriaPage() {
   </header>
 
   {/* Topo da página */}
-  <div className="flex items-center justify-between mb-4">
+  <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between mb-4">
 
     <div>
     <h1
@@ -187,24 +218,29 @@ export default function GestoriaPage() {
     </div>
 
     {/* Data atual */}
-    <div
-  className={`px-4 py-2 rounded-xl shadow transition-colors duration-300 ${
-    darkMode
-      ? "bg-gray-800 text-white"
-      : "bg-white text-gray-800"
-  }`}
+<div
+  className={`
+    inline-flex w-fit items-center
+    px-4 py-2 rounded-xl shadow
+    transition-colors duration-300
+    ${
+      darkMode
+        ? "bg-gray-800 text-white"
+        : "bg-white text-gray-800"
+    }
+  `}
 >
-
   📅 {new Date().toLocaleDateString("pt-BR")}
-    </div>
+</div>
 
   </div>
 
   {/* Cards do topo */}
-<div className="grid grid-cols-3 gap-4 mb-4">
+<div className="mb-4 overflow-x-auto">
+<div className="flex gap-4 min-w-max pb-2">
 
 <div
-  className={`p-6 rounded-2xl shadow transition-colors duration-300 ${
+  className={`min-w-[165px] md:min-w-0 md:flex-1 p-6 rounded-2xl shadow transition-colors duration-300 ${
     darkMode
       ? "bg-gray-800 text-white"
       : "bg-white text-gray-800"
@@ -218,13 +254,13 @@ export default function GestoriaPage() {
       Total de Alunos
     </p>
 
-    <h2 className="text-4xl font-bold text-blue-700 mt-2">
+    <h2 className="text-4xl font-bold text-blue-700 mt-2 text-center md:text-left">
       12.480
     </h2>
   </div>
 
   <div
-  className={`p-6 rounded-2xl shadow transition-colors duration-300 ${
+  className={`min-w-[150px] md:min-w-0 md:flex-1 p-6 rounded-2xl shadow transition-colors duration-300 ${
     darkMode
       ? "bg-gray-800 text-white"
       : "bg-white text-gray-800"
@@ -239,13 +275,13 @@ export default function GestoriaPage() {
       Professores
     </p>
 
-    <h2 className="text-4xl font-bold text-green-600 mt-2">
+    <h2 className="text-4xl font-bold text-green-600 mt-2 text-center md:text-left">
       328
     </h2>
   </div>
 
   <div
-  className={`p-6 rounded-2xl shadow transition-colors duration-300 ${
+  className={`min-w-[150px] md:min-w-0 md:flex-1 p-6 rounded-2xl shadow transition-colors duration-300 ${
     darkMode
       ? "bg-gray-800 text-white"
       : "bg-white text-gray-800"
@@ -260,19 +296,20 @@ export default function GestoriaPage() {
       Matérias
     </p>
 
-    <h2 className="text-4xl font-bold text-purple-600 mt-2">
+    <h2 className="text-4xl font-bold text-purple-600 mt-2 text-center md:text-left">
       452
     </h2>
   </div>
     
 </div>
+</div>
 
 {/* Área principal */}
-<div className="grid grid-cols-3 gap-4 mb-4">
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
 
   {/* Quadro de horários do dia*/}
   <div
-  className={`col-span-2 rounded-2xl shadow p-6 transition-colors duration-300 ${
+  className={`col-span-1 lg:col-span-2 rounded-2xl shadow p-6 transition-colors duration-300 ${
     darkMode
       ? "bg-gray-800 text-white"
       : "bg-white text-gray-800"
@@ -469,7 +506,7 @@ export default function GestoriaPage() {
     >
 
   {/* Cabeçalho */}
-  <div className="flex items-center justify-between mb-6">
+  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
 
     <div>
       <h2
@@ -504,7 +541,7 @@ export default function GestoriaPage() {
   {/* Tabela */}
   <div className="overflow-x-auto">
 
-    <table className="w-full table-fixed">
+    <table className="min-w-[700px] w-full table-fixed">
 
       <thead>
 
