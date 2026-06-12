@@ -58,7 +58,7 @@ export default function GestoriaPage() {
   `}
 >
 
-   {/* Parte superior */}
+   {/* Parte superior da Sidebar*/}
         <div>
 
           {/* Logo */}
@@ -70,7 +70,7 @@ export default function GestoriaPage() {
             />
           </div>
 
-    {/* Navegação da Navbar */}
+    {/* Navegação da Sidebar */}
     <nav className="no-underline flex flex-col p-4 gap-2">
 
       <button className="sidebar-button bg-blue-600 text-white">
@@ -83,7 +83,7 @@ export default function GestoriaPage() {
          GestoriaIA
       </button>
 
-      <button className="sidebar-button"
+      <button className="sidebar-button hidden md:block"
         onClick={() => {
           window.scrollTo({
             top: document.body.scrollHeight,
@@ -98,7 +98,7 @@ export default function GestoriaPage() {
 
   </div>
  
-  {/* Parte inferior da Navbar */}
+  {/* Parte inferior da Sidebar */}
   <div className="p-4 flex flex-col gap-2">
 
     <button className="sidebar-button">
@@ -120,7 +120,7 @@ export default function GestoriaPage() {
 <section className="flex-1 w-full p-4">
 
  {/* Topbar */}
-<header className={`h-20 rounded-2xl shadow-sm px-6 flex items-center justify-between mb-6 transition-colors duration-300 ${
+<header className={`relative z-[60] h-20 rounded-2xl shadow-sm px-6 flex items-center justify-between mb-6 transition-colors duration-300 ${
     darkMode
       ? "bg-gray-800 text-white"
       : "bg-white text-gray-800"
@@ -129,7 +129,7 @@ export default function GestoriaPage() {
   {/* Lado esquerdo */}
   <div className="flex items-center gap-3 md:gap-6">
 
-{/* botão abrir topbar para dispositivos móveis */}
+{/* botão abrir sidebar para dispositivos móveis */}
 <button
   onClick={() => setMenuOpen(!menuOpen)}
   className="md:hidden"
