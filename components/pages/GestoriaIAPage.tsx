@@ -8,6 +8,8 @@ import {
   PrinterIcon,
   MoonIcon,
   SunIcon,
+  Bars3Icon,
+  XMarkIcon,
 } from "@heroicons/react/24/outline";
 
 import { useEffect, useState } from "react";
@@ -19,6 +21,10 @@ export default function GestoriaIAPage() {
     /* constante do modo escuro e diurno */
 
 const [darkMode, setDarkMode] = useState(false);
+
+  /* constante da sidebar no mobile */
+
+const [menuOpen, setMenuOpen] = useState(false);
 
     /* constante do relógio */
 
@@ -48,7 +54,7 @@ const [darkMode, setDarkMode] = useState(false);
   return (
 
     <main
-  className={`flex min-h-screen transition-colors duration-300 ${
+  className={`md:flex min-h-screen overflow-x-hidden transition-colors duration-300 ${
     darkMode
       ? "bg-gray-900"
       : "bg-gray-300"
@@ -56,12 +62,29 @@ const [darkMode, setDarkMode] = useState(false);
 >
 
       {/* Sidebar */}
-      <aside
-  className={`w-64 h-[95vh] sticky top-4 ml-4 rounded-2xl flex flex-col justify-between transition-colors duration-300 ${
-    darkMode
-      ? "bg-gray-800 text-white"
-      : "bg-white text-gray-800"
-  }`}
+     <aside
+  className={`
+    fixed md:sticky
+    top-0 md:top-4
+    left-0
+    z-50
+    h-screen md:h-[calc(100vh-2rem)]
+    w-64
+    ml-0 md:ml-4
+    rounded-2xl
+    flex flex-col justify-between
+    transition-all duration-300
+    ${
+      menuOpen
+        ? "translate-x-0"
+        : "-translate-x-full md:translate-x-0"
+    }
+    ${
+      darkMode
+        ? "bg-gray-800 text-white"
+        : "bg-white text-gray-800"
+    }
+  `}
 >
 
         {/* Parte superior */}
@@ -90,7 +113,7 @@ const [darkMode, setDarkMode] = useState(false);
             </button>
 
             <button
-              className="sidebar-button"
+              className="sidebar-button hidden md:block"
               onClick={() => {
                 window.scrollTo({
                   top: document.body.scrollHeight,
@@ -123,10 +146,11 @@ const [darkMode, setDarkMode] = useState(false);
       </aside>
 
       {/* Conteúdo */}
-      <section className="flex-1 p-4">
+      <section className="flex-1 w-full p-4">
 
         {/* Topbar */}
-<header className={`h-20 rounded-2xl shadow-sm px-6 flex items-center justify-between mb-6 transition-colors duration-300 ${
+<header
+  className={`relative z-[60] h-20 rounded-2xl shadow-sm px-6 flex items-center justify-between mb-6 transition-colors duration-300 ${
     darkMode
       ? "bg-gray-800 text-white"
       : "bg-white text-gray-800"
@@ -134,12 +158,22 @@ const [darkMode, setDarkMode] = useState(false);
 >
 
   {/* Lado esquerdo */}
-  <div className="flex items-center gap-6">
+  <div className="flex items-center gap-3 md:gap-6">
+
+    <button
+  onClick={() => setMenuOpen(!menuOpen)}
+  className="md:hidden"
+>
+  {menuOpen ? (
+    <XMarkIcon className="w-6 h-6" />
+  ) : (
+    <Bars3Icon className="w-6 h-6" />
+  )}
+</button>
 
     {/* Título */}
-    <div>
-<h1
-  className={`text-2xl font-bold ${
+    <div className="hidden md:block">
+<h1 className={`text-2xl font-bold ${
     darkMode 
     ? "text-white" 
     : "text-gray-800"
@@ -154,7 +188,7 @@ const [darkMode, setDarkMode] = useState(false);
       <input
         type="text"
         placeholder="Pesquisar registros..."
-        className={`w-72 pl-10 pr-4 py-2 rounded-xl border outline-none focus:border-blue-500 ${
+        className={`w-40 sm:w-60 md:w-72 pl-10 pr-4 py-2 rounded-xl border outline-none focus:border-blue-500 ${
   darkMode
     ? "bg-gray-700 border-gray-600 text-white"
     : "bg-gray-50 border-gray-300 text-gray-800"
@@ -169,7 +203,7 @@ const [darkMode, setDarkMode] = useState(false);
   </div>
 
   {/* Lado direito */}
-  <div className="flex items-center gap-5">
+  <div className="flex items-center gap-2 md:gap-5">
 
     {/* Ícones */}
 
@@ -184,11 +218,11 @@ const [darkMode, setDarkMode] = useState(false);
   )}
 </button>
 
-    <button className="text-xl cursor-pointer">
+    <button className="text-xl cursor-pointer hidden md:block">
       <BellIcon className="w-5 h-5" />
     </button>
 
-    <button className="text-xl cursor-pointer">
+    <button className="text-xl cursor-pointer hidden md:block">
       <Cog6ToothIcon className="w-5 h-5" />
     </button>
 
@@ -197,9 +231,9 @@ const [darkMode, setDarkMode] = useState(false);
 </header>
 
         {/* Topo */}
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between mb-4">
 
-          <div className="ml-6">
+          <div>
             <h1
             className={`text-4xl font-bold ${
             darkMode ? "text-white" : "text-gray-800"
@@ -218,7 +252,7 @@ const [darkMode, setDarkMode] = useState(false);
           </div>
 
            {/* Data atual */}
-    <div className={`px-4 py-2 rounded-xl shadow transition-colors duration-300 ${
+    <div className={`inline-flex w-fit items-center px-4 py-2 rounded-xl shadow transition-colors duration-300 ${
         darkMode
         ? "bg-gray-800 text-white"
         : "bg-white text-gray-800"
@@ -230,10 +264,10 @@ const [darkMode, setDarkMode] = useState(false);
         </div>
 
     {/* Cards IA */}
-<div className="grid grid-cols-4 gap-4">
+<div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
 
   {/* Card 1 */}
-  <div  className={`rounded-2xl shadow-md p-6 transition-colors duration-300 ${
+  <div   className={`md:min-w-0 md:flex-1 rounded-2xl shadow-md p-4 md:p-6 transition-colors duration-300 ${
     darkMode
       ? "bg-gray-800 text-white"
       : "bg-white text-gray-800"
@@ -246,22 +280,22 @@ const [darkMode, setDarkMode] = useState(false);
         Fluxo de Alunos
       </h2>
 
-      <span className="bg-blue-100 text-blue-700 text-xs px-3 py-1 rounded-full">
+      <span className="bg-blue-100 text-blue-700 text-[10px] md:text-xs px-2 md:px-3 py-1 rounded-full">
         AO VIVO
       </span>
 
     </div>
 
-    <h1 className="text-5xl font-bold mb-2">
+    <h1 className="text-3xl md:text-5xl font-bold mb-2 text-center md:text-left">
       85%
     </h1>
 
     <p className="text-sm  mb-4">
-      Alunos previstos para entrada hoje
+      Entrada prevista hoje
     </p>
 
     {/* Barra */}
-    <div className="w-full bg-gray-200 rounded-full h-3">
+    <div className="hidden md:block w-full bg-gray-200 rounded-full h-3">
 
       <div className="bg-blue-500 h-3 rounded-full w-[85%]"></div>
 
@@ -270,7 +304,7 @@ const [darkMode, setDarkMode] = useState(false);
   </div>
 
   {/* Card 2 */}
-  <div   className={`rounded-2xl shadow-md p-6 transition-colors duration-300 ${
+  <div   className={`md:min-w-0 md:flex-1 rounded-2xl shadow-md p-4 md:p-6 transition-colors duration-300 ${
     darkMode
       ? "bg-gray-800 text-white"
       : "bg-white text-gray-800"
@@ -281,7 +315,7 @@ const [darkMode, setDarkMode] = useState(false);
       Processamento IA
     </h2>
 
-    <h1 className="text-4xl font-bold text-green-600 mb-2">
+    <h1 className="text-2xl md:text-4xl font-bold text-green-600 mb-2 text-center md:text-left">
       Otimizado
     </h1>
 
@@ -292,7 +326,7 @@ const [darkMode, setDarkMode] = useState(false);
   </div>
 
   {/* Card 3 */}
-  <div   className={`rounded-2xl shadow-md p-6 transition-colors duration-300 ${
+  <div   className={`md:min-w-0 md:flex-1 rounded-2xl shadow-md p-4 md:p-6 transition-colors duration-300 ${
     darkMode
       ? "bg-gray-800 text-white"
       : "bg-white text-gray-800"
@@ -303,14 +337,14 @@ const [darkMode, setDarkMode] = useState(false);
       Alertas Ativos
     </h2>
 
-    <h1 className="text-5xl font-bold text-orange-500">
+    <h1 className="text-3xl md:text-5xl font-bold text-orange-500 text-center md:text-left">
       03
     </h1>
 
   </div>
 
   {/* Card 4 */}
-  <div className={`rounded-2xl shadow-md p-6 transition-colors duration-300 ${
+  <div className={`md:min-w-0 md:flex-1 rounded-2xl shadow-md p-4 md:p-6 transition-colors duration-300 ${
     darkMode
       ? "bg-gray-800 text-white"
       : "bg-white text-gray-800"
@@ -321,7 +355,7 @@ const [darkMode, setDarkMode] = useState(false);
       Solicitações IA
     </h2>
 
-    <h1 className="text-5xl font-bold text-purple-600">
+    <h1 className="text-3xl md:text-5xl font-bold text-purple-600 text-center md:text-left">
       124
     </h1>
 
@@ -336,11 +370,11 @@ const [darkMode, setDarkMode] = useState(false);
 </div>
 
 {/* Feed IA + Avisos */}
-<div className="grid grid-cols-3 gap-4 mt-4">
+<div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
 
   {/* Feed IA */}
   <div
-  className={`col-span-2 rounded-2xl shadow-md p-6 transition-colors duration-300 ${
+  className={`col-span-1 lg:col-span-2 rounded-2xl shadow-md p-6 transition-colors duration-300 ${
     darkMode
       ? "bg-gray-800 text-white"
       : "bg-white text-gray-800"
@@ -348,7 +382,7 @@ const [darkMode, setDarkMode] = useState(false);
 >
 
     {/* Cabeçalho */}
-    <div className="flex items-center justify-between mb-6">
+    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6">
 
       <h2 className="text-2xl font-bold">
         Feed de Atividades IA
@@ -507,7 +541,7 @@ className={`rounded-2xl shadow-md p-6 transition-colors duration-300 ${
 >
 
   {/* Cabeçalho */}
-  <div className="flex items-center justify-between mb-6">
+  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
 
     <div>
       <h2 className="text-2xl font-bold">
@@ -526,7 +560,7 @@ className={`rounded-2xl shadow-md p-6 transition-colors duration-300 ${
 
     </div>
 
-<div className="flex items-center gap-3">
+<div className="flex flex-wrap items-center gap-3">
     <button className="px-1 py-1  hover:bg-gray-500 transition cursor-pointer text-xl rounded-full">
     <PrinterIcon className="w-5 h-5" />
     </button>
@@ -563,7 +597,7 @@ className={`rounded-2xl shadow-md p-6 transition-colors duration-300 ${
     </div>
 
     {/* Horários */}
-    <div className="grid grid-cols-2 gap-4 mb-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
 
       {/* Original */}
       <div className="bg-white rounded-xl p-5 shadow-sm border-l-4 border-red-400">
@@ -602,7 +636,7 @@ className={`rounded-2xl shadow-md p-6 transition-colors duration-300 ${
     </div>
 
     {/* Botões */}
-    <div className="flex gap-4">
+    <div className="flex flex-col md:flex-row gap-4">
 
       <button className="flex-1 bg-blue-600 hover:bg-blue-700 transition text-white py-4 rounded-xl font-semibold cursor-pointer">
 
@@ -632,14 +666,14 @@ className={`rounded-2xl shadow-md p-6 transition-colors duration-300 ${
       className="flex-1 bg-transparent outline-none px-3 text-gray-900"
     />
 
-    <button className="bg-blue-600 hover:bg-blue-700 transition-all duration-300 text-white px-5 py-2 rounded-2xl font-semibold cursor-pointer">
+    <button className="bg-blue-600 hover:bg-blue-700 transition-all duration-300 text-white px-4 md:px-5 py-2 rounded-2xl font-semibold cursor-pointer">
       Enviar
     </button>
 
   </div>
 
   {/* Cards inferiores */}
-  <div className="grid grid-cols-4 gap-4">
+  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
 
     
 
