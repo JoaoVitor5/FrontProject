@@ -54,7 +54,7 @@ const [menuOpen, setMenuOpen] = useState(false);
   return (
 
     <main
-  className={`md:flex min-h-screen overflow-x-hidden transition-colors duration-300 ${
+  className={`md:flex min-h-screen transition-colors duration-300 ${
     darkMode
       ? "bg-gray-900"
       : "bg-gray-300"
@@ -160,6 +160,7 @@ const [menuOpen, setMenuOpen] = useState(false);
   {/* Lado esquerdo */}
   <div className="flex items-center gap-3 md:gap-6">
 
+{/* botão abrir sidebar para dispositivos móveis */}
     <button
   onClick={() => setMenuOpen(!menuOpen)}
   className="md:hidden"

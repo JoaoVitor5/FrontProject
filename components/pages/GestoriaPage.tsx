@@ -17,11 +17,12 @@ import { useState } from "react";
 export default function GestoriaPage() {
 
      /* constante do modo escuro e diurno */
-    
     const [darkMode, setDarkMode] = useState(false);
 
+    /* constante da data */
     const router = useRouter();
 
+      /* constante da sidebar no mobile */
     const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -66,7 +67,7 @@ export default function GestoriaPage() {
             <img
               src={darkMode ? "/eniac-logo-branca.png" : "/eniac-logo.png"}
               alt="Logo ENIAC"
-                className="max-h-12 w-40 object-contain"
+              className="max-h-12 w-40 object-contain"
             />
           </div>
 
