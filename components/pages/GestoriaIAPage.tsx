@@ -189,7 +189,7 @@ const [menuOpen, setMenuOpen] = useState(false);
       <input
         type="text"
         placeholder="Pesquisar registros..."
-        className={`w-40 sm:w-60 md:w-72 pl-10 pr-4 py-2 rounded-xl border outline-none focus:border-blue-500 ${
+        className={`w-[110px] min-[340px]:w-40 sm:w-60 md:w-72 pl-10 pr-4 py-2 rounded-xl border outline-none focus:border-blue-500 ${
   darkMode
     ? "bg-gray-700 border-gray-600 text-white"
     : "bg-gray-50 border-gray-300 text-gray-800"
@@ -236,7 +236,7 @@ const [menuOpen, setMenuOpen] = useState(false);
 
           <div>
             <h1
-            className={`text-4xl font-bold ${
+            className={`text-2xl sm:text-3xl md:text-4xl font-bold ${
             darkMode ? "text-white" : "text-gray-800"
             }`}
 >
@@ -265,7 +265,7 @@ const [menuOpen, setMenuOpen] = useState(false);
         </div>
 
     {/* Cards IA */}
-<div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+<div className="grid grid-cols-1 min-[340px]:grid-cols-2 lg:grid-cols-4 gap-4">
 
   {/* Card 1 */}
   <div   className={`md:min-w-0 md:flex-1 rounded-2xl shadow-md p-4 md:p-6 transition-colors duration-300 ${
@@ -383,7 +383,7 @@ const [menuOpen, setMenuOpen] = useState(false);
 >
 
     {/* Cabeçalho */}
-    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6">
+    <div className="flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between">
 
       <h2 className="text-2xl font-bold">
         Feed de Atividades IA
@@ -414,7 +414,7 @@ const [menuOpen, setMenuOpen] = useState(false);
         IA notificou automaticamente a turma e sugeriu aula assíncrona.
       </p>
 
-      <div className="flex gap-3 mt-4">
+      <div className="flex flex-col sm:flex-row gap-3">
 
         <button className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition cursor-pointer">
           Detalhes
@@ -659,7 +659,7 @@ className={`rounded-2xl shadow-md p-6 transition-colors duration-300 ${
 <div className="mt-8 flex flex-col gap-4">
 
       {/* Campo chat IA */}
-  <div className="bg-gray-300 rounded-3xl shadow-md p-3 flex items-center gap-3">
+  <div className="bg-gray-300 rounded-3xl shadow-md p-3 flex flex-col sm:flex-row gap-3">
 
     <input
       type="text"
@@ -674,11 +674,11 @@ className={`rounded-2xl shadow-md p-6 transition-colors duration-300 ${
   </div>
 
   {/* Cards inferiores */}
-  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+  <div className="grid grid-cols-1 min-[340px]:grid-cols-2 lg:grid-cols-4 gap-4">
 
-    
 
-    {/* Rede */}
+
+    {/* Solicitações IA hoje */}
     <div
   className={`rounded-3xl shadow-md p-4 transition-colors duration-300 ${
     darkMode
@@ -695,7 +695,7 @@ className={`rounded-2xl shadow-md p-6 transition-colors duration-300 ${
       </h3>
     </div>
 
-    {/* Energia */}
+    {/* Processamento IA */}
         <div
   className={`rounded-3xl shadow-md p-4 transition-colors duration-300 ${
     darkMode

@@ -29,7 +29,9 @@ export default function GestoriaPage() {
 
 <main
   className={`md:flex min-h-screen transition-colors duration-300 ${
-    darkMode ? "bg-gray-900" : "bg-gray-300"
+    darkMode 
+    ? "bg-gray-900" 
+    : "bg-gray-300"
   }`}
 >
 
@@ -41,7 +43,7 @@ export default function GestoriaPage() {
     left-0
     z-50
     h-screen md:h-[calc(100vh-2rem)]
-    w-64
+    w-56 min-[340px]:w-64
     ml-0 md:ml-4
     rounded-2xl
     flex flex-col justify-between
@@ -67,7 +69,7 @@ export default function GestoriaPage() {
             <img
               src={darkMode ? "/eniac-logo-branca.png" : "/eniac-logo.png"}
               alt="Logo ENIAC"
-              className="max-h-12 w-40 object-contain"
+              className="max-h-10 sm:max-h-12 w-32 sm:w-40 object-contain"
             />
           </div>
 
@@ -121,14 +123,14 @@ export default function GestoriaPage() {
 <section className="flex-1 w-full p-4">
 
  {/* Topbar */}
-<header className={`relative z-[60] h-20 rounded-2xl shadow-sm px-6 flex items-center justify-between mb-6 transition-colors duration-300 ${
+<header className={`relative z-[60] h-16 sm:h-20 rounded-2xl shadow-sm px-2 sm:px-6 flex items-center justify-between mb-6 transition-colors duration-300 ${
     darkMode
       ? "bg-gray-800 text-white"
       : "bg-white text-gray-800"
   }`}
 >    
   {/* Lado esquerdo */}
-  <div className="flex items-center gap-3 md:gap-6">
+  <div className="flex items-center gap-2 sm:gap-3 md:gap-6">
 
 {/* botão abrir sidebar para dispositivos móveis */}
 <button
@@ -136,7 +138,7 @@ export default function GestoriaPage() {
   className="md:hidden"
 >
   {menuOpen ? (
-    <XMarkIcon className="w-6 h-6" />
+    <XMarkIcon className="w-5 h-5 sm:w-6 sm:h-6" />
   ) : (
     <Bars3Icon className="w-6 h-6" />
   )}
@@ -144,7 +146,7 @@ export default function GestoriaPage() {
 
     {/* Título */}
     <div className="hidden md:block">
-      <h1 className="text-2xl font-bold">
+      <h1 className="text-xl sm:text-2xl md:text-2xl font-bold">
         Navegação Gestoria
       </h1>
     </div>
@@ -154,14 +156,14 @@ export default function GestoriaPage() {
       <input
         type="text"
         placeholder="Pesquisar registros..."
-        className={`w-40 sm:w-60 md:w-72 pl-10 pr-4 py-2 rounded-xl border outline-none focus:border-blue-500 ${
+        className={`w-40 min-[340px]:w-50 sm:w-60 md:w-72 pl-8 sm:pl-10 pr-4 py-2 rounded-xl border outline-none focus:border-blue-500 ${
   darkMode
     ? "bg-gray-700 border-gray-600 text-white"
     : "bg-gray-50 border-gray-300 text-gray-800"
 }`}
       />
 
-      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+      <span className="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 text-gray-400">
         <MagnifyingGlassIcon className="w-5 h-5" />
       </span>
     </div>
@@ -169,7 +171,7 @@ export default function GestoriaPage() {
   </div>
 
   {/* Lado direito */}
-  <div className="flex items-center gap-2 md:gap-5">
+  <div className="flex items-center gap-1 sm:gap-2 md:gap-5">
 
 {/* Ícones */}
 
@@ -201,7 +203,7 @@ export default function GestoriaPage() {
 
     <div>
     <h1
-  className={`text-3xl font-bold ${
+  className={`text-xl min-[340px]:text-2xl md:text-3xl font-bold ${
     darkMode ? "text-white" : "text-gray-800"
      }`}
     >
@@ -209,7 +211,7 @@ export default function GestoriaPage() {
     </h1>
 
 <p
-  className={`${
+  className={`text-sm sm:text-base ${
     darkMode ? "text-gray-300" : "text-gray-500"
   }`}
 >
@@ -222,7 +224,7 @@ export default function GestoriaPage() {
 <div
   className={`
     inline-flex w-fit items-center
-    px-4 py-2 rounded-xl shadow
+    px-2 py-1 text-xs sm:text-sm rounded-xl shadow
     transition-colors duration-300
     ${
       darkMode
@@ -241,7 +243,7 @@ export default function GestoriaPage() {
 <div className="flex gap-4 min-w-max pb-2">
 
 <div
-  className={`min-w-[165px] md:min-w-0 md:flex-1 p-6 rounded-2xl shadow transition-colors duration-300 ${
+  className={`min-w-[150px] md:min-w-0 md:flex-1 p-6 rounded-2xl shadow transition-colors duration-300 ${
     darkMode
       ? "bg-gray-800 text-white"
       : "bg-white text-gray-800"
@@ -255,7 +257,7 @@ export default function GestoriaPage() {
       Total de Alunos
     </p>
 
-    <h2 className="text-4xl font-bold text-blue-700 mt-2 text-center md:text-left">
+    <h2 className="text-2xl min-[340px]:text-3xl md:text-4xl font-bold text-blue-700 mt-2 text-center md:text-left">
       12.480
     </h2>
   </div>
@@ -276,7 +278,7 @@ export default function GestoriaPage() {
       Professores
     </p>
 
-    <h2 className="text-4xl font-bold text-green-600 mt-2 text-center md:text-left">
+    <h2 className="text-2xl min-[340px]:text-3xl md:text-4xl font-bold text-green-600 mt-2 text-center md:text-left">
       328
     </h2>
   </div>
@@ -297,7 +299,7 @@ export default function GestoriaPage() {
       Matérias
     </p>
 
-    <h2 className="text-4xl font-bold text-purple-600 mt-2 text-center md:text-left">
+    <h2 className="text-2xl min-[340px]:text-3xl md:text-4xl font-bold text-purple-600 mt-2 text-center md:text-left">
       452
     </h2>
   </div>
@@ -310,17 +312,17 @@ export default function GestoriaPage() {
 
   {/* Quadro de horários do dia*/}
   <div
-  className={`col-span-1 lg:col-span-2 rounded-2xl shadow p-6 transition-colors duration-300 ${
+  className={`col-span-1 lg:col-span-2 rounded-2xl shadow p-3 sm:p-4 md:p-6 transition-colors duration-300 ${
     darkMode
       ? "bg-gray-800 text-white"
       : "bg-white text-gray-800"
   }`}
 >
 
-    <div className="flex items-center justify-between mb-6">
+    <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between mb-6">
 
       <h2
-  className={`text-xl font-bold ${
+  className={`text-base sm:text-lg md:text-xl font-bold ${
     darkMode ? "text-white" : "text-gray-800"
   }`}
 >
@@ -420,7 +422,7 @@ export default function GestoriaPage() {
 
     {/* Avaliações docentes */}
     <div
-    className={`rounded-2xl shadow p-6 transition-colors duration-300 ${
+    className={`rounded-2xl shadow p-3 sm:p-4 md:p-6 transition-colors duration-300 ${
     darkMode
       ? "bg-gray-800 text-white"
       : "bg-white text-gray-800"
@@ -485,7 +487,7 @@ export default function GestoriaPage() {
         A faculdade atingiu o maior índice de aprovação dos últimos anos.
       </p>
 
-      <button className="bg-white text-blue-700 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition cursor-pointer">
+      <button className="bg-white text-blue-700 px-2 py-1 text-xs sm:px-4 sm:py-2 sm:text-sm rounded-lg font-semibold hover:bg-gray-100 transition cursor-pointer">
         Baixar Relatório
       </button>
 
@@ -542,7 +544,7 @@ export default function GestoriaPage() {
   {/* Tabela */}
   <div className="overflow-x-auto">
 
-    <table className="min-w-[700px] w-full table-fixed">
+    <table className="min-w-[520px] sm:min-w-[700px] w-full table-fixed">
 
       <thead>
 
